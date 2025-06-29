@@ -1,7 +1,7 @@
 'use server';
 
 /**
- * @fileOverview This file implements the adaptive rule suggestions flow for Sentinel Shield.
+ * @fileOverview This file implements the adaptive rule suggestions flow for SunuBouclier.
  *
  * - suggestAdaptiveRules - A function that generates adaptive rule suggestions based on AI auto-learning.
  * - SuggestAdaptiveRulesInput - The input type for the suggestAdaptiveRules function.
@@ -39,7 +39,7 @@ const prompt = ai.definePrompt({
   name: 'suggestAdaptiveRulesPrompt',
   input: {schema: SuggestAdaptiveRulesInputSchema},
   output: {schema: SuggestAdaptiveRulesOutputSchema},
-  prompt: `You are an AI-powered security analyst for Sentinel Shield. Based on the identified threat and recent security logs, suggest adaptive security rules to mitigate the threat.
+  prompt: `You are an AI-powered security analyst for SunuBouclier. Based on the identified threat and recent security logs, suggest adaptive security rules to mitigate the threat.
 
 Threat Description: {{{threatDescription}}}
 Recent Logs: {{{recentLogs}}}

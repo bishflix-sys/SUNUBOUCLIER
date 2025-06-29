@@ -28,11 +28,11 @@ export default function SettingsPage() {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="admin-email">Admin Email</Label>
-                <Input id="admin-email" type="email" defaultValue="admin@sentinel.sh" />
+                <Input id="admin-email" type="email" defaultValue="admin@sunubouclier.sn" />
               </div>
                <div className="space-y-2">
                 <Label htmlFor="instance-name">Instance Name</Label>
-                <Input id="instance-name" defaultValue="Sentinel Shield - Production" />
+                <Input id="instance-name" defaultValue="SunuBouclier - Production" />
               </div>
             </CardContent>
           </Card>

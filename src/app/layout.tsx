@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Sentinel Shield',
+  title: 'SunuBouclier',
   description: 'Open source WAF with AI-powered threat detection.',
 };
 
