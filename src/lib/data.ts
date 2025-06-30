@@ -93,16 +93,16 @@ export const sites: Site[] = [
 ];
 
 export const logs: LogEntry[] = [
-    { id: '1', timestamp: '2023-10-27T10:00:00Z', severity: 'Error', sourceIp: '198.51.100.1', request: 'POST /api/login', action: 'Blocked' },
-    { id: '2', timestamp: '2023-10-27T10:00:05Z', severity: 'Info', sourceIp: '203.0.113.25', request: 'GET /', action: 'Allowed' },
-    { id: '3', timestamp: '2023-10-27T10:01:10Z', severity: 'Warning', sourceIp: '198.51.100.2', request: 'GET /admin', action: 'Monitored' },
-    { id: '4', timestamp: '2023-10-27T10:02:00Z', severity: 'Critical', sourceIp: '198.51.100.1', request: "GET /?q=' OR 1=1", action: 'Blocked' },
-    { id: '5', timestamp: '2023-10-27T10:02:30Z', severity: 'Info', sourceIp: '203.0.113.26', request: 'GET /pricing', action: 'Allowed' },
-    { id: '6', timestamp: '2023-10-27T10:03:00Z', severity: 'Info', sourceIp: '203.0.113.25', request: 'GET /about', action: 'Allowed' },
-    { id: '7', timestamp: '2023-10-27T10:04:00Z', severity: 'Error', sourceIp: '198.51.100.3', request: 'POST /api/v1/users', action: 'Blocked' },
-    { id: '8', timestamp: '2023-10-27T10:05:00Z', severity: 'Warning', sourceIp: '192.0.2.14', request: 'GET /old-endpoint', action: 'Monitored' },
-    { id: '9', timestamp: '2023-10-27T10:05:30Z', severity: 'Info', sourceIp: '203.0.113.27', request: 'GET /contact', action: 'Allowed' },
-    { id: '10', timestamp: '2023-10-27T10:06:00Z', severity: 'Critical', sourceIp: '198.51.100.1', request: 'GET /?q=<script>alert(1)</script>', action: 'Blocked' },
+    { id: '1', timestamp: '2024-07-20T10:00:00Z', severity: 'Error', sourceIp: '198.51.100.1', request: 'POST /api/login', action: 'Blocked' },
+    { id: '2', timestamp: '2024-07-20T10:00:05Z', severity: 'Info', sourceIp: '203.0.113.25', request: 'GET /', action: 'Allowed' },
+    { id: '3', timestamp: '2024-07-21T10:01:10Z', severity: 'Warning', sourceIp: '198.51.100.2', request: 'GET /admin', action: 'Monitored' },
+    { id: '4', timestamp: '2024-07-21T10:02:00Z', severity: 'Critical', sourceIp: '198.51.100.1', request: "GET /?q=' OR 1=1", action: 'Blocked' },
+    { id: '5', timestamp: '2024-07-22T10:02:30Z', severity: 'Info', sourceIp: '203.0.113.26', request: 'GET /pricing', action: 'Allowed' },
+    { id: '6', timestamp: '2024-07-22T10:03:00Z', severity: 'Info', sourceIp: '203.0.113.25', request: 'GET /about', action: 'Allowed' },
+    { id: '7', timestamp: '2024-07-23T10:04:00Z', severity: 'Error', sourceIp: '198.51.100.3', request: 'POST /api/v1/users', action: 'Blocked' },
+    { id: '8', timestamp: '2024-07-23T10:05:00Z', severity: 'Warning', sourceIp: '192.0.2.14', request: 'GET /old-endpoint', action: 'Monitored' },
+    { id: '9', timestamp: '2024-07-24T10:05:30Z', severity: 'Info', sourceIp: '203.0.113.27', request: 'GET /contact', action: 'Allowed' },
+    { id: '10', timestamp: '2024-07-24T10:06:00Z', severity: 'Critical', sourceIp: '198.51.100.1', request: 'GET /?q=<script>alert(1)</script>', action: 'Blocked' },
   ];
   
 

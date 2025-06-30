@@ -10,8 +10,10 @@ import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { rules } from "@/lib/data"
+import { rules as initialRules } from "@/lib/data"
+import type { Rule } from "@/lib/types"
 import { Loader2, Wand2 } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 const recentLogsExample = `
 [2023-10-27 10:20:01] Suspicious POST request to /api/v1/users/profile containing payload: {"$ne": "user"}.
@@ -20,9 +22,32 @@ const recentLogsExample = `
 `;
 
 export function RulesClient() {
+    const { toast } = useToast()
+    const [rules, setRules] = useState<Rule[]>(initialRules)
+    const [luaScript, setLuaScript] = useState("-- Your custom Lua script here\nfunction handle_request(req)\n  -- Example: block requests from a specific IP\n  if req.ip == '123.123.123.123' then\n    return 'block'\n  end\n  return 'pass'\nend")
     const [threatDescription, setThreatDescription] = useState("A new NoSQL injection vulnerability was discovered in the user profile update endpoint. Attackers can manipulate queries to extract sensitive user data.")
     const [aiSuggestions, setAiSuggestions] = useState<SuggestAdaptiveRulesOutput | null>(null)
     const [loadingSuggestions, setLoadingSuggestions] = useState(false)
+
+    const handleRuleToggle = (ruleId: string, enabled: boolean) => {
+        setRules(currentRules =>
+            currentRules.map(rule =>
+                rule.id === ruleId ? { ...rule, enabled } : rule
+            )
+        )
+        toast({
+            title: `Rule ${enabled ? 'Enabled' : 'Disabled'}`,
+            description: `Rule ${ruleId} has been updated.`,
+        })
+    }
+    
+    const handleSaveLuaScript = () => {
+        console.log("Saving Lua Script:", luaScript)
+        toast({
+            title: "Script Saved",
+            description: "Your custom Lua script has been saved successfully.",
+        })
+    }
 
     const handleGenerateRules = async () => {
         setLoadingSuggestions(true)
@@ -35,7 +60,11 @@ export function RulesClient() {
             setAiSuggestions(result)
         } catch (error) {
             console.error("Failed to generate AI rules:", error)
-            // Here you would use a toast to show the error
+            toast({
+                variant: "destructive",
+                title: "Error",
+                description: "Failed to generate AI-powered rule suggestions.",
+            })
         } finally {
             setLoadingSuggestions(false)
         }
@@ -75,7 +104,10 @@ export function RulesClient() {
                     </TableCell>
                     <TableCell>{rule.type}</TableCell>
                     <TableCell className="text-right">
-                      <Switch defaultChecked={rule.enabled} />
+                      <Switch 
+                        checked={rule.enabled} 
+                        onCheckedChange={(checked) => handleRuleToggle(rule.id, checked)}
+                      />
                     </TableCell>
                   </TableRow>
                 ))}
@@ -95,11 +127,17 @@ export function RulesClient() {
           <CardContent>
             <div className="grid gap-2">
                 <Label htmlFor="lua-script" className="font-medium">Lua Script</Label>
-                <Textarea id="lua-script" placeholder="-- Your Lua script here" rows={15} className="font-code text-sm" />
+                <Textarea 
+                    id="lua-script"
+                    value={luaScript}
+                    onChange={(e) => setLuaScript(e.target.value)}
+                    rows={15} 
+                    className="font-code text-sm" 
+                />
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Save Script</Button>
+            <Button onClick={handleSaveLuaScript}>Save Script</Button>
           </CardFooter>
         </Card>
       </TabsContent>
