@@ -46,8 +46,8 @@ export default function LogsPage() {
 
     const handleExport = () => {
         toast({
-            title: "Exporting logs...",
-            description: "Your log data is being prepared for download.",
+            title: "Exportation des journaux...",
+            description: "Vos données de journal sont en cours de préparation pour le téléchargement.",
         });
     };
 
@@ -63,13 +63,13 @@ export default function LogsPage() {
 
     return (
         <>
-            <Header title="Logs" />
+            <Header title="Journaux" />
             <main className="flex-1 p-4 sm:px-6 sm:py-0 space-y-4">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Security Logs</CardTitle>
+                        <CardTitle>Journaux de Sécurité</CardTitle>
                         <CardDescription>
-                            Review and filter all incoming request logs and security events.
+                            Examinez et filtrez tous les journaux de requêtes entrantes et les événements de sécurité.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
@@ -78,7 +78,7 @@ export default function LogsPage() {
                                 <div className="relative">
                                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                                     <Input 
-                                        placeholder="Search logs..." 
+                                        placeholder="Rechercher dans les journaux..." 
                                         className="pl-8" 
                                         value={searchTerm}
                                         onChange={handleSearchChange}
@@ -94,7 +94,7 @@ export default function LogsPage() {
                                             )}
                                         >
                                             <CalendarIcon className="mr-2 h-4 w-4" />
-                                            {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                            {date ? format(date, "PPP") : <span>Choisir une date</span>}
                                         </Button>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto p-0" align="start">
@@ -106,21 +106,21 @@ export default function LogsPage() {
                                         />
                                     </PopoverContent>
                                 </Popover>
-                                {date && <Button variant="ghost" onClick={() => setDate(undefined)}>Clear</Button>}
+                                {date && <Button variant="ghost" onClick={() => setDate(undefined)}>Effacer</Button>}
                             </div>
                             <Button variant="outline" onClick={handleExport}>
                                 <FileDown className="mr-2 h-4 w-4" />
-                                Export
+                                Exporter
                             </Button>
                         </div>
                         <div className="rounded-md border">
                             <Table>
                                 <TableHeader>
                                     <TableRow>
-                                        <TableHead>Timestamp</TableHead>
-                                        <TableHead>Severity</TableHead>
-                                        <TableHead>Source IP</TableHead>
-                                        <TableHead>Request</TableHead>
+                                        <TableHead>Horodatage</TableHead>
+                                        <TableHead>Sévérité</TableHead>
+                                        <TableHead>IP Source</TableHead>
+                                        <TableHead>Requête</TableHead>
                                         <TableHead>Action</TableHead>
                                     </TableRow>
                                 </TableHeader>
@@ -145,7 +145,7 @@ export default function LogsPage() {
                                         ))
                                     ) : (
                                         <TableRow>
-                                            <TableCell colSpan={5} className="text-center h-24">No logs found.</TableCell>
+                                            <TableCell colSpan={5} className="text-center h-24">Aucun journal trouvé.</TableCell>
                                         </TableRow>
                                     )}
                                 </TableBody>
@@ -153,11 +153,11 @@ export default function LogsPage() {
                         </div>
                         <div className="flex justify-between items-center space-x-2">
                              <span className="text-sm text-muted-foreground">
-                                Page {currentPage} of {totalPages}
+                                Page {currentPage} sur {totalPages}
                              </span>
                              <div className="flex items-center space-x-2">
-                                <Button variant="outline" size="sm" onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 1}>Previous</Button>
-                                <Button variant="outline" size="sm" onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage >= totalPages}>Next</Button>
+                                <Button variant="outline" size="sm" onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 1}>Précédent</Button>
+                                <Button variant="outline" size="sm" onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage >= totalPages}>Suivant</Button>
                              </div>
                         </div>
                     </CardContent>

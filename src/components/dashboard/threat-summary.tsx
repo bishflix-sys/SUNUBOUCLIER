@@ -12,10 +12,10 @@ import { zeroDayThreatSummary } from "@/ai/flows/threat-summary";
 import { Lightbulb } from "lucide-react";
 
 const logDataExample = `
-[2023-10-27 10:00:00] WARN: Unusual outbound connection to 123.45.67.89 on port 4444.
-[2023-10-27 10:05:12] INFO: User 'admin' logged in from 192.168.1.1.
-[2023-10-27 10:15:30] CRITICAL: Unrecognized process 'exploit.sh' attempting to access /etc/shadow.
-[2023-10-27 10:20:00] INFO: New rule 'block-suspicious-outbound' auto-applied.
+[2023-10-27 10:00:00] WARN: Connexion sortante inhabituelle vers 123.45.67.89 sur le port 4444.
+[2023-10-27 10:05:12] INFO: Utilisateur 'admin' connecté depuis 192.168.1.1.
+[2023-10-27 10:15:30] CRITICAL: Processus non reconnu 'exploit.sh' tentant d'accéder à /etc/shadow.
+[2023-10-27 10:20:00] INFO: Nouvelle règle 'bloquer-sorties-suspectes' appliquée automatiquement.
 `;
 
 export function ThreatSummary() {
@@ -27,13 +27,13 @@ export function ThreatSummary() {
       try {
         setLoading(true);
         const result = await zeroDayThreatSummary({
-          timePeriod: "last 24 hours",
+          timePeriod: "dernières 24 heures",
           logData: logDataExample,
         });
         setSummary(result.summary);
       } catch (error) {
-        console.error("Error fetching threat summary:", error);
-        setSummary("Could not load threat summary at this time.");
+        console.error("Erreur lors de la récupération du résumé des menaces:", error);
+        setSummary("Impossible de charger le résumé des menaces pour le moment.");
       } finally {
         setLoading(false);
       }
@@ -46,10 +46,10 @@ export function ThreatSummary() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Lightbulb className="text-accent" />
-          <span>AI-Powered Threat Summary</span>
+          <span>Résumé des Menaces par l'IA</span>
         </CardTitle>
         <CardDescription>
-          AI-generated summary of potential zero-day threats detected.
+          Résumé généré par l'IA des menaces zero-day potentielles détectées.
         </CardDescription>
       </CardHeader>
       <CardContent>

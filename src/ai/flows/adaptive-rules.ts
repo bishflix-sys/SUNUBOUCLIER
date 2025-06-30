@@ -1,11 +1,11 @@
 'use server';
 
 /**
- * @fileOverview This file implements the adaptive rule suggestions flow for SunuBouclier.
+ * @fileOverview Ce fichier implémente le flux de suggestions de règles adaptatives pour SunuBouclier.
  *
- * - suggestAdaptiveRules - A function that generates adaptive rule suggestions based on AI auto-learning.
- * - SuggestAdaptiveRulesInput - The input type for the suggestAdaptiveRules function.
- * - SuggestAdaptiveRulesOutput - The return type for the suggestAdaptiveRules function.
+ * - suggestAdaptiveRules - Une fonction qui génère des suggestions de règles adaptatives basées sur l'apprentissage automatique de l'IA.
+ * - SuggestAdaptiveRulesInput - Le type d'entrée pour la fonction suggestAdaptiveRules.
+ * - SuggestAdaptiveRulesOutput - Le type de retour pour la fonction suggestAdaptiveRules.
  */
 
 import {ai} from '@/ai/genkit';
@@ -14,20 +14,20 @@ import {z} from 'genkit';
 const SuggestAdaptiveRulesInputSchema = z.object({
   threatDescription: z
     .string()
-    .describe('Description of the newly identified threat.'),
+    .describe('Description de la menace nouvellement identifiée.'),
   recentLogs: z
     .string()
-    .describe('Recent security logs related to the identified threat.'),
+    .describe('Journaux de sécurité récents liés à la menace identifiée.'),
 });
 export type SuggestAdaptiveRulesInput = z.infer<typeof SuggestAdaptiveRulesInputSchema>;
 
 const SuggestAdaptiveRulesOutputSchema = z.object({
   ruleSuggestions: z
     .array(z.string())
-    .describe('An array of suggested adaptive security rules to mitigate the threat.'),
+    .describe("Un tableau de règles de sécurité adaptatives suggérées pour atténuer la menace."),
   explanation: z
     .string()
-    .describe('Explanation of why these rules are suggested and how they address the threat.'),
+    .describe("Explication des raisons pour lesquelles ces règles sont suggérées et comment elles répondent à la menace."),
 });
 export type SuggestAdaptiveRulesOutput = z.infer<typeof SuggestAdaptiveRulesOutputSchema>;
 
@@ -39,12 +39,12 @@ const prompt = ai.definePrompt({
   name: 'suggestAdaptiveRulesPrompt',
   input: {schema: SuggestAdaptiveRulesInputSchema},
   output: {schema: SuggestAdaptiveRulesOutputSchema},
-  prompt: `You are an AI-powered security analyst for SunuBouclier. Based on the identified threat and recent security logs, suggest adaptive security rules to mitigate the threat.
+  prompt: `Vous êtes un analyste de sécurité alimenté par l'IA pour SunuBouclier. En vous basant sur la menace identifiée et les journaux de sécurité récents, suggérez des règles de sécurité adaptatives pour atténuer la menace.
 
-Threat Description: {{{threatDescription}}}
-Recent Logs: {{{recentLogs}}}
+Description de la Menace: {{{threatDescription}}}
+Journaux Récents: {{{recentLogs}}}
 
-Suggest specific and actionable security rules, and explain why each rule is suggested and how it addresses the threat. Return the rules as an array of strings.
+Suggérez des règles de sécurité spécifiques et exploitables, et expliquez pourquoi chaque règle est suggérée et comment elle répond à la menace. Retournez les règles sous forme de tableau de chaînes de caractères.
 `,
 });
 

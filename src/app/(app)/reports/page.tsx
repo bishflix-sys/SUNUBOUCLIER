@@ -21,7 +21,7 @@ import { topBlockedIPsData } from "@/lib/data";
 export default function ReportsPage() {
   return (
     <>
-      <Header title="Reports" />
+      <Header title="Rapports" />
       <main className="flex-1 p-4 sm:px-6 sm:py-0 space-y-4">
         <div className="grid gap-4 md:grid-cols-2">
           <ThreatsOverTimeChart />
@@ -29,18 +29,18 @@ export default function ReportsPage() {
         </div>
         <Card>
           <CardHeader>
-            <CardTitle>Top Blocked IPs</CardTitle>
+            <CardTitle>Top des IPs Bloquées</CardTitle>
             <CardDescription>
-              IP addresses with the most blocked malicious requests.
+              Adresses IP avec le plus de requêtes malveillantes bloquées.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>IP Address</TableHead>
-                  <TableHead>Country</TableHead>
-                  <TableHead className="text-right">Blocked Requests</TableHead>
+                  <TableHead>Adresse IP</TableHead>
+                  <TableHead>Pays</TableHead>
+                  <TableHead className="text-right">Requêtes Bloquées</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

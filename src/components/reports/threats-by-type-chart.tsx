@@ -15,8 +15,8 @@ export function ThreatsByTypeChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Threats by Type</CardTitle>
-        <CardDescription>Distribution of detected threat types.</CardDescription>
+        <CardTitle>Menaces par Type</CardTitle>
+        <CardDescription>Distribution des types de menaces détectées.</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={{}} className="h-[200px] w-full">

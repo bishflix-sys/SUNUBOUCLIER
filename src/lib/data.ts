@@ -5,91 +5,89 @@ import {
   LayoutDashboard,
   Shield,
   Settings,
-  ArrowDown,
   ArrowUp,
   Activity,
   AlertTriangle,
   Server,
-  Signal,
 } from "lucide-react";
 import type { NavItem, StatCardData, TrafficData, RecentActivity, Rule, Site, LogEntry } from "./types";
 
 export const navItems: NavItem[] = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/rules", label: "Rules", icon: Shield },
+  { href: "/dashboard", label: "Tableau de bord", icon: LayoutDashboard },
+  { href: "/rules", label: "Règles", icon: Shield },
   { href: "/sites", label: "Sites", icon: Globe },
-  { href: "/logs", label: "Logs", icon: FileText },
-  { href: "/reports", label: "Reports", icon: BarChart2 },
-  { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/logs", label: "Journaux", icon: FileText },
+  { href: "/reports", label: "Rapports", icon: BarChart2 },
+  { href: "/settings", label: "Paramètres", icon: Settings },
 ];
 
 export const statCards: StatCardData[] = [
   {
-    label: "Total Requests",
+    label: "Requêtes Totales",
     value: "480,295",
-    change: "+20.1% from last month",
+    change: "+20.1% depuis le mois dernier",
     changeType: "increase",
     icon: Activity,
   },
   {
-    label: "Threats Blocked",
+    label: "Menaces Bloquées",
     value: "1,237",
-    change: "+180.1% from last month",
+    change: "+180.1% depuis le mois dernier",
     changeType: "increase",
     icon: AlertTriangle,
   },
   {
-    label: "Uptime",
+    label: "Disponibilité",
     value: "99.98%",
-    change: "-0.01% from last month",
+    change: "-0.01% depuis le mois dernier",
     changeType: "decrease",
     icon: ArrowUp,
   },
   {
-    label: "CPU Load",
+    label: "Charge CPU",
     value: "34%",
-    change: "+2% from last hour",
+    change: "+2% depuis la dernière heure",
     changeType: "increase",
     icon: Server,
   },
 ];
 
 export const trafficData: TrafficData[] = [
-  { name: "Jan", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Feb", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Mar", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Apr", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "May", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Jun", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Jul", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Aug", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Sep", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Janv", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Févr", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Mars", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Avr", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Mai", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Juin", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Juil", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Août", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Sept", total: Math.floor(Math.random() * 5000) + 1000 },
   { name: "Oct", total: Math.floor(Math.random() * 5000) + 1000 },
   { name: "Nov", total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: "Dec", total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: "Déc", total: Math.floor(Math.random() * 5000) + 1000 },
 ];
 
 export const recentActivities: RecentActivity[] = [
-  { id: "1", description: "SQL Injection attempt from 192.168.1.100 blocked.", timestamp: "2 minutes ago", severity: "high" },
-  { id: "2", description: "New rule 'Block-Tor-Exit-Nodes' enabled.", timestamp: "15 minutes ago", severity: "low" },
-  { id: "3", description: "CPU usage exceeded 80% threshold.", timestamp: "1 hour ago", severity: "medium" },
-  { id: "4", description: "XSS attack on /login endpoint prevented.", timestamp: "3 hours ago", severity: "high" },
-  { id: "5", description: "Configuration updated for api.example.com", timestamp: "5 hours ago", severity: "low" },
+  { id: "1", description: "Tentative d'injection SQL depuis 192.168.1.100 bloquée.", timestamp: "il y a 2 minutes", severity: "high" },
+  { id: "2", description: "Nouvelle règle 'Bloquer-Noeuds-Sortie-Tor' activée.", timestamp: "il y a 15 minutes", severity: "low" },
+  { id: "3", description: "Utilisation CPU a dépassé le seuil de 80%.", timestamp: "il y a 1 heure", severity: "medium" },
+  { id: "4", description: "Attaque XSS sur le point de terminaison /login empêchée.", timestamp: "il y a 3 heures", severity: "high" },
+  { id: "5", description: "Configuration mise à jour pour api.example.com.", timestamp: "il y a 5 heures", severity: "low" },
 ];
 
 export const rules: Rule[] = [
-  { id: "RULE-001", name: "Block Common SQLi Patterns", description: "Protects against common SQL injection attacks by matching known patterns.", type: "Semantic", enabled: true },
-  { id: "RULE-002", name: "Prevent Cross-Site Scripting (XSS)", description: "Filters and sanitizes inputs to prevent persistent and reflected XSS.", type: "Semantic", enabled: true },
-  { id: "RULE-003", name: "Login Brute-Force Protection", description: "Limits login attempts to 5 per minute from a single IP.", type: "Rate Limit", enabled: true },
-  { id: "RULE-004", name: "Block Malicious User-Agents", description: "Blocks requests from known malicious user agents and scanners.", type: "Firewall", enabled: false },
-  { id: "RULE-005", name: "Remote Code Execution (RCE) Shield", description: "Inspects payloads for signatures of remote code execution.", type: "Semantic", enabled: true },
+  { id: "RULE-001", name: "Blocage des motifs SQLi courants", description: "Protège contre les attaques par injection SQL courantes en faisant correspondre des motifs connus.", type: "Semantic", enabled: true },
+  { id: "RULE-002", name: "Prévention du Cross-Site Scripting (XSS)", description: "Filtre et assainit les entrées pour prévenir les attaques XSS persistantes et réfléchies.", type: "Semantic", enabled: true },
+  { id: "RULE-003", name: "Protection contre la force brute de connexion", description: "Limite les tentatives de connexion à 5 par minute depuis une seule IP.", type: "Rate Limit", enabled: true },
+  { id: "RULE-004", name: "Blocage des User-Agents malveillants", description: "Bloque les requêtes provenant d'user-agents et de scanners malveillants connus.", type: "Firewall", enabled: false },
+  { id: "RULE-005", name: "Bouclier contre l'Exécution de Code à Distance (RCE)", description: "Inspecte les charges utiles pour détecter les signatures d'exécution de code à distance.", type: "Semantic", enabled: true },
 ];
 
 export const sites: Site[] = [
-  { id: "SITE-001", name: "Main Corporate Website", url: "www.example.com", status: "Online", ssl: true },
-  { id: "SITE-002", name: "API Gateway", url: "api.example.com", status: "Online", ssl: true },
-  { id: "SITE-003", name: "Staging Environment", url: "staging.example.com", status: "Offline", ssl: false },
-  { id: "SITE-004", name: "Marketing Landing Page", url: "promo.example.com", status: "Online", ssl: true },
+  { id: "SITE-001", name: "Site Web Principal", url: "www.example.com", status: "Online", ssl: true },
+  { id: "SITE-002", name: "Passerelle API", url: "api.example.com", status: "Online", ssl: true },
+  { id: "SITE-003", name: "Environnement de Test", url: "staging.example.com", status: "Offline", ssl: false },
+  { id: "SITE-004", name: "Page Marketing", url: "promo.example.com", status: "Online", ssl: true },
 ];
 
 export const logs: LogEntry[] = [
@@ -117,17 +115,17 @@ export const threatsOverTimeData = [
 ]
 
 export const threatsByTypeData = [
-    { type: 'SQLi', count: 450, fill: 'hsl(var(--chart-1))' },
+    { type: 'Injection SQL', count: 450, fill: 'hsl(var(--chart-1))' },
     { type: 'XSS', count: 320, fill: 'hsl(var(--chart-2))' },
-    { type: 'RCE', count: 180, fill: 'hsl(var(--chart-3))' },
-    { type: 'LFI', count: 95, fill: 'hsl(var(--chart-4))' },
-    { type: 'Other', count: 210, fill: 'hsl(var(--chart-5))' },
+    { type: 'Exécution Code', count: 180, fill: 'hsl(var(--chart-3))' },
+    { type: 'Inclusion Fichier', count: 95, fill: 'hsl(var(--chart-4))' },
+    { type: 'Autres', count: 210, fill: 'hsl(var(--chart-5))' },
 ]
 
 export const topBlockedIPsData = [
-    { ip: '198.51.100.1', count: 124, country: 'Russia' },
-    { ip: '104.28.18.34', count: 98, country: 'China' },
-    { ip: '203.0.113.55', count: 76, country: 'USA' },
-    { ip: '192.0.2.14', count: 52, country: 'Brazil' },
-    { ip: '93.184.216.34', count: 31, country: 'Netherlands' },
+    { ip: '198.51.100.1', count: 124, country: 'Russie' },
+    { ip: '104.28.18.34', count: 98, country: 'Chine' },
+    { ip: '203.0.113.55', count: 76, country: 'États-Unis' },
+    { ip: '192.0.2.14', count: 52, country: 'Brésil' },
+    { ip: '93.184.216.34', count: 31, country: 'Pays-Bas' },
 ]

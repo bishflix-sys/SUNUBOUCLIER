@@ -30,8 +30,8 @@ export default function SitesPage() {
         if (!newSiteName || !newSiteUrl) {
             toast({
                 variant: "destructive",
-                title: "Validation Error",
-                description: "Site Name and Upstream URL are required.",
+                title: "Erreur de Validation",
+                description: "Le nom du site et l'URL en amont sont requis.",
             });
             return;
         }
@@ -46,8 +46,8 @@ export default function SitesPage() {
 
         setSites(currentSites => [...currentSites, newSite]);
         toast({
-            title: "Site Added",
-            description: `${newSite.name} has been successfully added.`,
+            title: "Site Ajouté",
+            description: `${newSite.name} a été ajouté avec succès.`,
         });
 
         // Reset form and close dialog
@@ -59,8 +59,8 @@ export default function SitesPage() {
     
     const handleConfigure = (siteName: string) => {
         toast({
-            title: "Coming Soon!",
-            description: `Configuration options for ${siteName} are not yet implemented.`,
+            title: "Bientôt disponible !",
+            description: `Les options de configuration pour ${siteName} ne sont pas encore implémentées.`,
         })
     }
 
@@ -71,34 +71,34 @@ export default function SitesPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
-              <CardTitle>Manage Sites</CardTitle>
+              <CardTitle>Gérer les Sites</CardTitle>
               <CardDescription>
-                Add, remove, and configure your protected websites and applications.
+                Ajoutez, supprimez et configurez vos sites web et applications protégés.
               </CardDescription>
             </div>
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <Button>
                   <PlusCircle className="mr-2 h-4 w-4" />
-                  Add Site
+                  Ajouter un Site
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <form onSubmit={handleAddSite}>
                     <DialogHeader>
-                    <DialogTitle>Add a New Site</DialogTitle>
+                    <DialogTitle>Ajouter un Nouveau Site</DialogTitle>
                     <DialogDescription>
-                        Enter the details of the new site to protect.
+                        Entrez les détails du nouveau site à protéger.
                     </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="name" className="text-right">
-                        Site Name
+                        Nom du Site
                         </Label>
                         <Input 
                             id="name" 
-                            placeholder="e.g., My Awesome App" 
+                            placeholder="ex: Mon Application Géniale" 
                             className="col-span-3"
                             value={newSiteName}
                             onChange={(e) => setNewSiteName(e.target.value)} 
@@ -106,7 +106,7 @@ export default function SitesPage() {
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="url" className="text-right">
-                        Upstream URL
+                        URL en Amont
                         </Label>
                         <Input 
                             id="url" 
@@ -118,7 +118,7 @@ export default function SitesPage() {
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="ssl" className="text-right">
-                        Auto SSL
+                        SSL Automatique
                         </Label>
                         <Switch 
                             id="ssl" 
@@ -128,7 +128,7 @@ export default function SitesPage() {
                     </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit">Add Site</Button>
+                        <Button type="submit">Ajouter le Site</Button>
                     </DialogFooter>
                 </form>
               </DialogContent>
@@ -139,7 +139,7 @@ export default function SitesPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Site</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Statut</TableHead>
                   <TableHead>SSL</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
@@ -153,14 +153,14 @@ export default function SitesPage() {
                     </TableCell>
                     <TableCell>
                       <Badge variant={site.status === "Online" ? "default" : "secondary"} className={site.status === "Online" ? "bg-green-500/20 text-green-700 border-green-500/30" : ""}>
-                        {site.status}
+                        {site.status === 'Online' ? 'En ligne' : 'Hors ligne'}
                       </Badge>
                     </TableCell>
                     <TableCell>
                         {site.ssl ? <CheckCircle className="h-5 w-5 text-green-500" /> : <XCircle className="h-5 w-5 text-destructive" />}
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button variant="ghost" size="sm" onClick={() => handleConfigure(site.name)}>Configure</Button>
+                      <Button variant="ghost" size="sm" onClick={() => handleConfigure(site.name)}>Configurer</Button>
                     </TableCell>
                   </TableRow>
                 ))}

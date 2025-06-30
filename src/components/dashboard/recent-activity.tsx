@@ -30,16 +30,16 @@ export function RecentActivity() {
   return (
     <Card className="col-span-1 lg:col-span-2">
       <CardHeader>
-        <CardTitle>Recent Activity</CardTitle>
-        <CardDescription>A log of the most recent security events and actions.</CardDescription>
+        <CardTitle>Activité Récente</CardTitle>
+        <CardDescription>Un journal des événements de sécurité et des actions les plus récents.</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Event</TableHead>
-              <TableHead className="hidden sm:table-cell">Severity</TableHead>
-              <TableHead className="text-right">Time</TableHead>
+              <TableHead>Événement</TableHead>
+              <TableHead className="hidden sm:table-cell">Sévérité</TableHead>
+              <TableHead className="text-right">Heure</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

@@ -18,8 +18,8 @@ export function ThreatsOverTimeChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Threats Over Time</CardTitle>
-        <CardDescription>Daily threat detection trends.</CardDescription>
+        <CardTitle>Menaces au Fil du Temps</CardTitle>
+        <CardDescription>Tendances quotidiennes de détection des menaces.</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={{}} className="h-[200px] w-full">

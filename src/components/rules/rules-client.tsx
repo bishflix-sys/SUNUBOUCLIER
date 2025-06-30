@@ -16,16 +16,16 @@ import { Loader2, Wand2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 const recentLogsExample = `
-[2023-10-27 10:20:01] Suspicious POST request to /api/v1/users/profile containing payload: {"$ne": "user"}.
-[2023-10-27 10:20:02] Unauthorized attempt to access user data from IP 54.12.34.56.
-[2023-10-27 10:20:03] Multiple failed queries with NoSQL syntax detected from the same IP.
+[2023-10-27 10:20:01] Requête POST suspecte vers /api/v1/users/profile contenant la charge utile : {"$ne": "user"}.
+[2023-10-27 10:20:02] Tentative non autorisée d'accès aux données utilisateur depuis l'IP 54.12.34.56.
+[2023-10-27 10:20:03] Plusieurs requêtes échouées avec la syntaxe NoSQL détectées depuis la même IP.
 `;
 
 export function RulesClient() {
     const { toast } = useToast()
     const [rules, setRules] = useState<Rule[]>(initialRules)
-    const [luaScript, setLuaScript] = useState("-- Your custom Lua script here\nfunction handle_request(req)\n  -- Example: block requests from a specific IP\n  if req.ip == '123.123.123.123' then\n    return 'block'\n  end\n  return 'pass'\nend")
-    const [threatDescription, setThreatDescription] = useState("A new NoSQL injection vulnerability was discovered in the user profile update endpoint. Attackers can manipulate queries to extract sensitive user data.")
+    const [luaScript, setLuaScript] = useState("-- Votre script Lua personnalisé ici\nfunction handle_request(req)\n  -- Exemple : bloquer les requêtes d'une IP spécifique\n  if req.ip == '123.123.123.123' then\n    return 'block'\n  end\n  return 'pass'\nend")
+    const [threatDescription, setThreatDescription] = useState("Une nouvelle vulnérabilité d'injection NoSQL a été découverte dans le point de terminaison de mise à jour du profil utilisateur. Les attaquants peuvent manipuler les requêtes pour extraire des données utilisateur sensibles.")
     const [aiSuggestions, setAiSuggestions] = useState<SuggestAdaptiveRulesOutput | null>(null)
     const [loadingSuggestions, setLoadingSuggestions] = useState(false)
 
@@ -36,16 +36,16 @@ export function RulesClient() {
             )
         )
         toast({
-            title: `Rule ${enabled ? 'Enabled' : 'Disabled'}`,
-            description: `Rule ${ruleId} has been updated.`,
+            title: `Règle ${enabled ? 'Activée' : 'Désactivée'}`,
+            description: `La règle ${ruleId} a été mise à jour.`,
         })
     }
     
     const handleSaveLuaScript = () => {
         console.log("Saving Lua Script:", luaScript)
         toast({
-            title: "Script Saved",
-            description: "Your custom Lua script has been saved successfully.",
+            title: "Script Enregistré",
+            description: "Votre script Lua personnalisé a été enregistré avec succès.",
         })
     }
 
@@ -62,8 +62,8 @@ export function RulesClient() {
             console.error("Failed to generate AI rules:", error)
             toast({
                 variant: "destructive",
-                title: "Error",
-                description: "Failed to generate AI-powered rule suggestions.",
+                title: "Erreur",
+                description: "Échec de la génération de suggestions de règles par l'IA.",
             })
         } finally {
             setLoadingSuggestions(false)
@@ -74,25 +74,25 @@ export function RulesClient() {
   return (
     <Tabs defaultValue="active" className="space-y-4">
       <TabsList>
-        <TabsTrigger value="active">Active Rules</TabsTrigger>
-        <TabsTrigger value="custom">Custom Rules (Lua)</TabsTrigger>
-        <TabsTrigger value="ai">AI Suggestions</TabsTrigger>
+        <TabsTrigger value="active">Règles Actives</TabsTrigger>
+        <TabsTrigger value="custom">Règles Personnalisées (Lua)</TabsTrigger>
+        <TabsTrigger value="ai">Suggestions IA</TabsTrigger>
       </TabsList>
       <TabsContent value="active">
         <Card>
           <CardHeader>
-            <CardTitle>Active Security Rules</CardTitle>
+            <CardTitle>Règles de Sécurité Actives</CardTitle>
             <CardDescription>
-              Manage and toggle predefined security rules.
+              Gérez et activez les règles de sécurité prédéfinies.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Rule Name</TableHead>
+                  <TableHead>Nom de la Règle</TableHead>
                   <TableHead>Type</TableHead>
-                  <TableHead className="text-right">Status</TableHead>
+                  <TableHead className="text-right">Statut</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -119,14 +119,14 @@ export function RulesClient() {
       <TabsContent value="custom">
         <Card>
           <CardHeader>
-            <CardTitle>Custom Rule Scripting</CardTitle>
+            <CardTitle>Script de Règle Personnalisée</CardTitle>
             <CardDescription>
-              Add or edit custom rules using Lua for advanced threat mitigation.
+              Ajoutez ou modifiez des règles personnalisées en utilisant Lua pour une atténuation avancée des menaces.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-2">
-                <Label htmlFor="lua-script" className="font-medium">Lua Script</Label>
+                <Label htmlFor="lua-script" className="font-medium">Script Lua</Label>
                 <Textarea 
                     id="lua-script"
                     value={luaScript}
@@ -137,26 +137,26 @@ export function RulesClient() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleSaveLuaScript}>Save Script</Button>
+            <Button onClick={handleSaveLuaScript}>Enregistrer le Script</Button>
           </CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="ai">
         <Card>
           <CardHeader>
-            <CardTitle>AI-Powered Rule Suggestions</CardTitle>
+            <CardTitle>Suggestions de Règles par l'IA</CardTitle>
             <CardDescription>
-              Describe a threat and let our AI generate adaptive rule suggestions.
+              Décrivez une menace et laissez notre IA générer des suggestions de règles adaptatives.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
              <div className="grid gap-2">
-                <Label htmlFor="threat-description">Threat Description</Label>
+                <Label htmlFor="threat-description">Description de la Menace</Label>
                 <Textarea 
                     id="threat-description" 
                     value={threatDescription}
                     onChange={(e) => setThreatDescription(e.target.value)}
-                    placeholder="Describe the new threat or vulnerability..." 
+                    placeholder="Décrivez la nouvelle menace ou vulnérabilité..." 
                     rows={4}
                 />
             </div>
@@ -166,7 +166,7 @@ export function RulesClient() {
                 ) : (
                     <Wand2 className="mr-2 h-4 w-4" />
                 )}
-                Generate Rules
+                Générer les Règles
             </Button>
 
             {loadingSuggestions && (
@@ -181,13 +181,13 @@ export function RulesClient() {
             
             {aiSuggestions && (
                 <div className="space-y-4 pt-4">
-                    <h3 className="font-semibold text-lg">Suggested Rules</h3>
+                    <h3 className="font-semibold text-lg">Règles Suggérées</h3>
                     <ul className="list-disc pl-5 space-y-2 text-sm font-code bg-secondary p-4 rounded-md">
                         {aiSuggestions.ruleSuggestions.map((rule, index) => (
                             <li key={index}><code>{rule}</code></li>
                         ))}
                     </ul>
-                    <h3 className="font-semibold text-lg">Explanation</h3>
+                    <h3 className="font-semibold text-lg">Explication</h3>
                     <p className="text-sm text-muted-foreground">{aiSuggestions.explanation}</p>
                 </div>
             )}

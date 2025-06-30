@@ -8,7 +8,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 export function TrafficChart() {
     const chartConfig = {
       total: {
-        label: "Requests",
+        label: "Requêtes",
         color: "hsl(var(--primary))",
       },
     }
@@ -16,8 +16,8 @@ export function TrafficChart() {
   return (
     <Card className="col-span-1 lg:col-span-2">
       <CardHeader>
-        <CardTitle>Traffic Overview</CardTitle>
-        <CardDescription>Total requests over the last 12 months.</CardDescription>
+        <CardTitle>Aperçu du Trafic</CardTitle>
+        <CardDescription>Total des requêtes sur les 12 derniers mois.</CardDescription>
       </CardHeader>
       <CardContent className="pl-2">
         <ChartContainer config={chartConfig} className="h-[350px] w-full">
